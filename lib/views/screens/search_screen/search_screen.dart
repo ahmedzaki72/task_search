@@ -51,7 +51,6 @@ class _SearchScreenState extends State<SearchScreen> {
     String? typeAnOr,
     String? typeValue2,
   }) {
-    if (secondSearch == null) {
       if (typeValue == "Age") {
         if (typeEqual == "=") {
           filterList = SearchCubit.get(context)
@@ -188,40 +187,7 @@ class _SearchScreenState extends State<SearchScreen> {
               .toList();
         }
       }
-    } else {
-      if (typeAnOr == "And") {
-        if (typeValue == "Age" && typeValue2 == "First Name") {
-          if (typeEqual == "=" && typeEqualS2 == "SWith") {
-            filterList = SearchCubit.get(context)
-                .userModelData!
-                .where((element) =>
-                    element.age! == int.parse(firstSearch!.trim()) &&
-                    element.firstName!
-                        .toLowerCase()
-                        .contains(secondSearch.trim()))
-                .toList();
-          } else if (typeEqual == "!=") {
-            filterList = SearchCubit.get(context)
-                .userModelData!
-                .where(
-                    (element) => element.age! != int.parse(firstSearch!.trim()))
-                .toList();
-          } else if (typeEqual == "<") {
-            filterList = SearchCubit.get(context)
-                .userModelData!
-                .where(
-                    (element) => element.age! <= int.parse(firstSearch!.trim()))
-                .toList();
-          } else if (typeEqual == ">") {
-            filterList = SearchCubit.get(context)
-                .userModelData!
-                .where(
-                    (element) => element.age! >= int.parse(firstSearch!.trim()))
-                .toList();
-          }
-        }
-      } else {}
-    }
+      //// when using (and) and or (or) have a lot of condition and this you handle in backend best and in ui or mobile not best practice way
   }
 
   @override

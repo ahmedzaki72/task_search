@@ -178,6 +178,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   listType: listAnOr,
                   typeValue: typeAnOr,
                   colorBorder: TColor.black,
+                  onChange: (value) {
+                    setState((){
+                       typeAnOr = value;
+                    });
+                  },
                 ),
                 const Sbox(h: 20),
                 option
